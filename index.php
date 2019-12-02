@@ -15,7 +15,7 @@
  <form align="right" action="check_wwid.php" method="post">
  <span style="color:#FFFF00;">
  <span style="font-size:28px;">Check my Reservation<br></span></span>
-<input type="text" maxlength="8" onkeyup="this.value=this.value.replace(/\D/g,'')" name="wwid" required="required">
+<input type="text" placeholder="WWID..." maxlength="8" onkeyup="this.value=this.value.replace(/\D/g,'')" name="wwid" required="required">
 <input type="submit">
 </form>
 </td>
@@ -23,7 +23,11 @@
  </tbody>
 </table>
 
+<div align="right">
+<a href="mailto:mia.zhang@intel.com">Issue Report</a>
+</div>
 
+<img src="./img/stage.png" style='display: block;margin-left: auto;margin-right: auto;width:30%'/>
 <table cellspacing="20" align="center">
 <?php
 	$total_table = 35;
@@ -59,13 +63,35 @@
 	for($i=1; $i<=7; $i++) {
 		echo "<tr>";
 		for($j=1; $j<=5; $j++){
-			//SQL
-			if($tables[$table]<10) {
-				printf ("<td><a href=\"table_detail.php?table=%d\"> <img src=\"./img/green.png\" width=100 height=100/><br>$table </td>", $table);
+			if($i==1 && $j==1) {
+				echo "<td width=100 height=100></td>";
+			}else if($i==1 && $j==5) {
+				echo "<td width=100 height=100></td>";
+			}else if($i==7 && $j==5) {
+				echo "<td width=100 height=100></td>";
+			}else if($i==7 && $j==3) {
+				echo "<td width=100 height=100></td>";
+			}else if($i==7 && $j==1) {
+				echo "<td width=100 height=100></td>";
 			}else {
-				printf ("<td><a href=\"table_detail.php?table=%d\"> <img src=\"./img/red.png\" width=100 height=100/><br>$table </td>", $table);
+
+				if($tables[$table]<10) {
+					//printf ("<td><a href=\"table_detail.php?table=%d\"> <img src=\"./img/green.png\" width=100 height=100/><br>$table </td>", $table);
+					echo "<td>";
+					printf("<a href=\"table_detail.php?table=%d\">", $table);
+					echo "<div style='width:100px; height:100px;line-height:100px;text-align:center;background-image:url(./img/green.png);background-size:100%;font-weight: bold;font-size:2em'>";
+					echo $table;
+					echo "</div></a></td>";
+				}else {
+					//printf ("<td><a href=\"table_detail.php?table=%d\"> <img src=\"./img/red.png\" width=100 height=100/><br>$table </td>", $table);
+					echo "<td>";
+					printf("<a href=\"table_detail.php?table=%d\">", $table);
+					echo "<div style='width:100px; height:100px;line-height:100px;text-align:center;background-image:url(./img/red.png);background-size:100% 100%;'>";
+					echo $table;
+					echo "</div></a></td>";
+				}
+				$table++;
 			}
-			$table++;
 		}
 		echo "<tr>";
 	}

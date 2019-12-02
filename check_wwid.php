@@ -57,6 +57,10 @@
             }
             echo "</table>";
         }
+        echo '<form action="reserve_cancel.php" method="post">';
+        echo '<input type="hidden" name="wwid" value="'.$wwid.'">';
+        echo '<input type="submit" value="Cancel My Reservation"></br>';
+        echo '</form>';
     }
     // 释放结果集合
     mysqli_free_result($result);
