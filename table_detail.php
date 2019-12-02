@@ -31,7 +31,7 @@
 			$cnt++;
 			
 		}
-		while ($cnt<10) {
+		while ($cnt<=10) {
 			echo "<tr>";
 			echo "<td width=80 align=\"center\">".$cnt."</td>";
 			echo "<td width=100></td>";
@@ -39,30 +39,23 @@
 			echo "</tr>";
 			$cnt++;
 		}
+		echo "</table>";
+		if($result->num_rows < 10 ) {
+			echo <<< eod
+			<form action="reserve_action.php" name="myForm" method="post"">
+			<br><br><h2>Input your WWID to reserve your seat:</h2>
+			<input type="text" maxlength="8" onkeyup="this.value=this.value.replace(/\D/g,'')" name="wwid" required="required"><br>
+			<input type="hidden" name="table" value="
+			eod;
+			echo $table;
+			echo '"<br>
+			<input type="submit"></br>
+			</form>';
+		}
 		// 释放结果集合
 		mysqli_free_result($result);
 	}
 	mysqli_close($con);
 ?>
-</table>
-
-<form action="reserve_action.php" method="post" onsubmit="return checker();">
-<br><br><h2>Input your WWID to reserve your seat:</h2>
-<input type="text" maxlength="8" οninput="value=value.replace(/[^\d]/g,'')" name="WWID"><br>
-<input type="hidden" name="table" value=<?php echo $_GET["table"]; ?>><br>
-<input type="submit" id="btn"></br>
-</form>
 </body>
-
-<script type="text/javascript">
-    function checker() {
-        var WWID = $("#WWID").val();
-        if（WWID==null || WWID==""){
-            alert("WWID cannot be empty!")
-			return false;
-        }
-		return true;
-    })
-</script> 
-
 </html>

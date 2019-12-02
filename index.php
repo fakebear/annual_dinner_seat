@@ -5,7 +5,26 @@
 </head>
 
 <body>
-<table cellspacing="10" align="center">
+<table border="0" cellpadding="1" cellspacing="1" style="width:100%;" height="108" background="./img/intel_banner.jpg">
+ <tbody>
+ <tr>
+ <td>
+ <span style="color:#FFFF00;">
+ <span style="font-size:28px;">2019 Intel Annual Dinner</span></span></td>
+ <td>
+ <form align="right" action="check_wwid.php" method="post">
+ <span style="color:#FFFF00;">
+ <span style="font-size:28px;">Check my Reservation<br></span></span>
+<input type="text" maxlength="8" onkeyup="this.value=this.value.replace(/\D/g,'')" name="wwid" required="required">
+<input type="submit">
+</form>
+</td>
+ </tr>
+ </tbody>
+</table>
+
+
+<table cellspacing="20" align="center">
 <?php
 	$total_table = 35;
 	
