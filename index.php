@@ -67,29 +67,29 @@
 				echo "<td width=100 height=100></td>";
 			}else if($i==1 && $j==5) {
 				echo "<td width=100 height=100></td>";
-			}else if($i==7 && $j==5) {
-				echo "<td width=100 height=100></td>";
-			}else if($i==7 && $j==3) {
-				echo "<td width=100 height=100></td>";
-			}else if($i==7 && $j==1) {
-				echo "<td width=100 height=100></td>";
+			//}else if($i==7 && $j==5) {
+			//	echo "<td width=100 height=100></td>";
+			//}else if($i==7 && $j==3) {
+			//	echo "<td width=100 height=100></td>";
+			//}else if($i==7 && $j==1) {
+			//	echo "<td width=100 height=100></td>";
 			}else {
-
-				if($tables[$table]<10) {
+				echo "<td>";
+				printf("<a href=\"table_detail.php?table=%d\">", $table);
+				if($tables[$table]==0) {
 					//printf ("<td><a href=\"table_detail.php?table=%d\"> <img src=\"./img/green.png\" width=100 height=100/><br>$table </td>", $table);
-					echo "<td>";
-					printf("<a href=\"table_detail.php?table=%d\">", $table);
+					echo "<div style='width:100px; height:100px;line-height:100px;text-align:center;background-image:url(./img/empty.png);background-size:100%;font-weight: bold;font-size:2em'>";
+				}else if($tables[$table]<10) {
+					//printf ("<td><a href=\"table_detail.php?table=%d\"> <img src=\"./img/green.png\" width=100 height=100/><br>$table </td>", $table);
 					echo "<div style='width:100px; height:100px;line-height:100px;text-align:center;background-image:url(./img/green.png);background-size:100%;font-weight: bold;font-size:2em'>";
-					echo $table;
-					echo "</div></a></td>";
-				}else {
+				}else if($tables[$table]==10){
 					//printf ("<td><a href=\"table_detail.php?table=%d\"> <img src=\"./img/red.png\" width=100 height=100/><br>$table </td>", $table);
-					echo "<td>";
-					printf("<a href=\"table_detail.php?table=%d\">", $table);
 					echo "<div style='width:100px; height:100px;line-height:100px;text-align:center;background-image:url(./img/red.png);background-size:100% 100%;'>";
-					echo $table;
-					echo "</div></a></td>";
+				}else {
+					echo "<div style='width:100px; height:100px;line-height:100px;text-align:center;background-image:url(./img/black.png);background-size:100% 100%;'>";
 				}
+				echo $table;
+				echo "</div></a></td>";
 				$table++;
 			}
 		}
